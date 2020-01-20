@@ -5,7 +5,7 @@ from rango.models import Category
 def index(request):
 
     # Query the data for the top 5 liked categories
-    category_list = Category.objects.orderby('-likes')[:5]
+    category_list = Category.objects.order_by('-likes')[:5]
     context_dict = {}
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories'] = category_list
