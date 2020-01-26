@@ -18,10 +18,7 @@ def index(request):
     context_dict['pages'] = pages_list
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories'] = category_list
-
-    # Call helper function to handle cookies
     visitor_cookie_handler(request)
-    context_dict['visits'] = request.session['visits']
 
     response = render(request, 'rango/index.html', context=context_dict)
     return response
@@ -29,7 +26,8 @@ def index(request):
 def about(request):
     context_dict = {'name': 'Fabrizio Catinella'}
 
-
+    visitor_cookie_handler(request)
+    context_dict['visits'] = request.session['visits']
 
     return render(request, 'rango/about.html', context=context_dict)
 
